@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <%- include('../shared/head', {css: ['login', 'navbar']}) %>
+    <body>
+        <%- include('../shared/navbar', {}) %>
+        <div>
+            <h3>Créer un nouveau ticket</h3>
+            <form method="POST" action="/ticket/create">
+                <div class="form-group">
+                    <label>Titre: </label>
+                    <input type="text" class="form-control" name="title" />
+                </div>
+
+                <div class="form-group">
+                    <label>Description: </label>
+                    <textarea  type="text" class="form-control" name="description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <input value="<%=emailuser%>" type="hidden" class="form-control" name="responsible" />
+                </div>
+                <div class="form-group">
+                    <label>Priorité: </label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="priority" value="Low" />
+                        <label class="form-check-label">Basse</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input  class="form-check-input" type="radio" name="priority" value="Medium" />
+                        <label class="form-check-label">Moyen</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input  class="form-check-input" type="radio" name="priority" value="High" />
+                        <label class="form-check-label">Haute</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+
+    </body>
+</html>

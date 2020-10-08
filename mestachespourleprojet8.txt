@@ -1,0 +1,15 @@
+- pour le signup rajouter la route et un lien depuis le signin
+- Pour les tokens c’est préférable qu’il y ait le user_id
+- Pour ce qui est des routes index et signup
+pas obligé d'avoir une route à "/"
+- utilisateur admin : créer ce type d'utilisateur "à la mano" et ensuite donner les identifiants à son client
+- tester connexion/inscription/déconnexion
+- montrer les tickets sans responsables
+- savoir que ticket a été traité
+- afficher les titres des tickets pas les numéros
+-créer une table commentaires onetomany sur les tickets avec le ticket-id
+-ajouter l'email de l'utilisateur
+-afficher les tickets par responsable, uutiliser un menu déroulant=1 vue
+-crypter les mots de passe
+sans ajax on peut faire la page des tickets avec les ocmmentiares et non d'utilisateurs
+mais il faut chercher les commentaires et joindre les deux tables

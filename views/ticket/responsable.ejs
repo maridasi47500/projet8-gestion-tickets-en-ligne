@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <%- include('../shared/head', {css: ['details', 'navbar']}) %>
+    <body>
+        <%- include('../shared/navbar', {}) %>
+        <%if (responsible && responsible.length>0){%>
+        <div class="filtrer-utilisateurs">
+            <p>Filtrer les tickets par responsable</p>
+            <form action="/ticket/responsable" method="post" id="lister-responsables" onsubmit="return false;">
+            <select name="nomresponsable" id="nom-responsable">
+            <%responsible.forEach(function(resp){%>
+            <option value="<%=resp%>"><%=resp%></option>
+            <%});%>
+            </select>
+            <input name="filtrer" value="filtrer" type="submit" />
+            </form>
+            
+        </div>
+        <section class="liste-tickets">
+        
+        </section>
+        <%}else{%>
+        <p>Aucun ticket en base.</p>
+        <%};%>
+    </body>
+</html>

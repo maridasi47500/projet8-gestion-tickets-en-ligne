@@ -1,0 +1,9 @@
+.details {
+	width: 400px;
+	margin: auto;
+}
+
+.details h2 {
+	margin-left: 0;
+	text-align: left;
+}

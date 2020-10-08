@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <%- include('../shared/head', {css: ['login', 'navbar']}) %>
+    <body>
+        <%- include('../shared/navbar', {}) %>
+        <div>
+            <h3>Editer ticket n°<%= ticket._id %></h3>
+            <form method="POST" action="/ticket/<%= ticket._id %>/update">
+                <% if (utilisateurdeceticket || adminconnected) {%>
+                <input type="hidden" value="<%= ticket._id %>">
+                <div class="form-group">
+                    <label>Titre: </label>
+                    <input <%if (adminconnected){%>readonly <%};%>type="text" class="form-control" name="title" value="<%= ticket.title %>" />
+                </div>
+
+                <div class="form-group">
+                    <label>Description: </label>
+                    <textarea <%if (adminconnected){%>readonly <%};%>type="text" class="form-control" name="description"><%= ticket.description %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Responsable: </label>
+      <%if (adminconnected){%>
+              <select id="responsible" name="responsible">
+
+<%users.forEach(function(user){%>
+			  <option value="<%=user%>" <%if(user == ticket.responsible){%>selected<%};%>><%=user%></option>
+
+<%});%>
+			</select>
+		<%}else{%>
+		<input name="responsible" value="<%=ticket.responsible%>" type="hidden"/>
+		<p><%=ticket.responsible %></p>
+		<%};%>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Priorité: </label>
+                    <div class="form-check form-check-inline">
+                        <input <%if (adminconnected){%>readonly onclick="return false;" <%};%>class="form-check-input" type="radio" name="priority" value="Low" <%= ticket.priority === 'Low' ? "checked " : "" %>/>
+                        <label class="form-check-label">Basse</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input <%if (adminconnected){%>readonly onclick="return false;" <%};%>class="form-check-input" type="radio" name="priority" value="Medium" <%= ticket.priority === 'Medium' ? "checked " : "" %>/>
+                        <label class="form-check-label">Moyen</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input <%if (adminconnected){%>readonly onclick="return false;" <%};%>class="form-check-input" type="radio" name="priority" value="High" <%= ticket.priority === 'High' ? "checked " : "" %>/>
+                        <label class="form-check-label">Haute</label>
+                    </div>
+                </div>
+
+                    <div class="form-group">
+                        <label>Completed: </label>
+                <%if (adminconnected && !ticket.completed){%>
+
+                        <input type="checkbox" class="btn btn-primary" name="completed" />
+
+                <%}else if(ticket.completed) {%>
+                    <p><img src="/images/traite.png" style="width:100px;height:100px;"/></p>
+                <%}else{%>
+                    <p><img src="/images/nontraite.png" style="width:100px;height:100px;"/></p>
+		<%}%>
+                    </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" />
+                </div>
+                <%}else{%>
+                <p>Il faut être l'utilisateur de ce ticket pour le modifier ou il faut être administrateur pour le valider.</p>
+                <%};%>
+            </form>
+        </div>
+
+    </body>
+</html>

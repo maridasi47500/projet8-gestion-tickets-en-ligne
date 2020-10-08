@@ -1,0 +1,21 @@
+table {
+	margin: auto;
+	border: 2px solid #000;
+	border-collapse: collapse;
+}
+
+thead > tr > th {
+	border-bottom: 2px solid #000;
+}
+
+.idTicket {
+	width: 300px;
+}
+
+.showTicket, .editTicket {
+	width: 150px;
+}
+
+td, th {
+	text-align: center;
+}
